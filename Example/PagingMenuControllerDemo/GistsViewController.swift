@@ -26,7 +26,7 @@ class GistsViewController: UITableViewController {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         
         let task = session.dataTask(with: request) { [weak self] data, response, error in
-            let result = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: AnyObject]]
+            let result = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String: AnyObject]]
             self?.gists = result ?? []
             
             DispatchQueue.main.async(execute: { () -> Void in
